@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #======================================================================
 #
-# dictutils.py - 
+# dictutils.py -
 #
 # Created by skywind on 2017/03/31
 # Last change: 2017/03/31 22:20:13
@@ -306,7 +306,7 @@ class Generator (object):
 		out = fp.write
 		outline = lambda x: fp.write(x + '\r\n')
 		outtext = lambda x: fp.write(text2html(x))
-		
+
 		return True
 
 	# 生成支持 css 的 html
@@ -416,7 +416,7 @@ class Generator (object):
 			outline('<div class="frq" title="%s">'%title)
 			outline('  (' + text2html(tag) + ')')
 			outline('</div>')
-			
+
 		# finalize
 		outline('<hr class="hr2"/>')
 		outline('</div>')
@@ -533,7 +533,7 @@ class Resemble (object):
 		t = t%(self._filename, self._lineno, text)
 		sys.stderr.write(t)
 		sys.stderr.flush()
-	
+
 	def load (self, filename):
 		self._resembles = []
 		self._words = {}
@@ -1010,7 +1010,7 @@ treasure = Treasure()
 # testing case
 #----------------------------------------------------------------------
 if __name__ == '__main__':
-	
+
 	def test1():
 		db = stardict.open_local('stardict.db')
 		data = db['higher']
@@ -1022,8 +1022,8 @@ if __name__ == '__main__':
 		resemble.load('resemble.txt')
 		# print resemble.dump_text(resemble[0])
 		for wt in resemble['stimulate']:
-			print resemble.dump_html(wt, 1).encode('gbk', 'ignore')
-			print ''
+			print(resemble.dump_html(wt, 1).encode('gbk', 'ignore'))
+			print('')
 		return 0
 
 	def test3():
@@ -1038,7 +1038,7 @@ if __name__ == '__main__':
 		data = db['breakup']
 		# html = treasure.define_html(data['translation'])
 		html = treasure.get_collins(data).encode('gbk', 'ignore')
-		print html
+		print(html)
 
 	def test5():
 		name1 = 'anki-front.txt'
@@ -1055,9 +1055,6 @@ if __name__ == '__main__':
 		import StringIO
 		sio = StringIO.StringIO()
 		generator._generate_html(sio, data)
-		print sio.getvalue().encode('gbk', 'ignore')
+		print(sio.getvalue().encode('gbk', 'ignore'))
 
 	test6()
-
-
-

@@ -5,7 +5,6 @@ from src.UI import *
 
 class WordBook(QtWidgets.QWidget):
     pass
-    
 # xzx的部分
 
 

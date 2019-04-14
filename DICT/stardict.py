@@ -3,7 +3,7 @@
 # vim: set ts=4 sw=4 tw=0 et :
 #======================================================================
 #
-# stardict.py - 
+# stardict.py -
 #
 # Created by skywind on 2011/05/13
 # Last Modified: 2018/08/11 14:11
@@ -43,7 +43,7 @@ def stripword(word):
 
 
 #----------------------------------------------------------------------
-# StarDict 
+# StarDict
 #----------------------------------------------------------------------
 class StarDict (object):
 
@@ -90,8 +90,8 @@ class StarDict (object):
         self.__conn.executescript(sql)
         self.__conn.commit()
 
-        fields = ( 'id', 'word', 'sw', 'phonetic', 'definition', 
-            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq', 
+        fields = ( 'id', 'word', 'sw', 'phonetic', 'definition',
+            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq',
             'exchange', 'detail', 'audio' )
         self.__fields = tuple([(fields[i], i) for i in range(len(fields))])
         self.__names = { }
@@ -121,7 +121,7 @@ class StarDict (object):
         if self.__conn:
             self.__conn.close()
         self.__conn = None
-    
+
     def __del__ (self):
         self.close()
 
@@ -352,11 +352,11 @@ class DictMySQL (object):
         self.__open()
 
     def __open (self):
-        mysql_startup()
-        if MySQLdb is None:
-            raise ImportError('No module named MySQLdb')
-        fields = [ 'id', 'word', 'sw', 'phonetic', 'definition', 
-            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq', 
+        # mysql_startup()
+        # if MySQLdb is None:
+        #     raise ImportError('No module named MySQLdb')
+        fields = [ 'id', 'word', 'sw', 'phonetic', 'definition',
+            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq',
             'exchange', 'detail', 'audio' ]
         self.__fields = tuple([(fields[i], i) for i in range(len(fields))])
         self.__names = { }
@@ -667,8 +667,8 @@ class DictCsv (object):
         if filename is not None:
             self.__csvname = os.path.abspath(filename)
         self.__codec = codec
-        self.__heads = ( 'word', 'phonetic', 'definition', 
-            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq', 
+        self.__heads = ( 'word', 'phonetic', 'definition',
+            'translation', 'pos', 'collins', 'oxford', 'tag', 'bnc', 'frq',
             'exchange', 'detail', 'audio' )
         heads = self.__heads
         self.__fields = tuple([ (heads[i], i) for i in range(len(heads)) ])
@@ -807,7 +807,7 @@ class DictCsv (object):
         else:
             fp = open(filename, 'w', encoding = codec)
             writer = csv.writer(fp)
-        writer.writerow(self.__heads)   
+        writer.writerow(self.__heads)
         for row in self.__rows:
             newrow = []
             for n in row:
@@ -1111,7 +1111,7 @@ class LemmaDB (object):
         if stem not in self._stems:
             self._stems[stem] = {}
         if word not in self._stems[stem]:
-            self._stems[stem][word] = len(self._stems[stem]) 
+            self._stems[stem][word] = len(self._stems[stem])
         if word not in self._words:
             self._words[word] = {}
         if stem not in self._words[word]:
@@ -1340,7 +1340,7 @@ class DictHelper (object):
         print('imported %d entries'%count)
         return count
 
-    # 差异比较（utf-8 的.txt 文件，单词和后面音标释义用tab分割） 
+    # 差异比较（utf-8 的.txt 文件，单词和后面音标释义用tab分割）
     def deficit_tab_txt (self, dictionary, txt, outname, opts = ''):
         deficit = {}
         for line in codecs.open(txt, encoding = 'utf-8'):
@@ -1411,7 +1411,7 @@ class DictHelper (object):
         import codecs
         words = {}
         with codecs.open(filename, 'r', encoding = encoding) as fp:
-            text = []   
+            text = []
             word = None
             for line in fp:
                 line = line.rstrip('\r\n')
@@ -1439,7 +1439,7 @@ class DictHelper (object):
             sys.exit(1)
         if desc is None:
             desc = u'Create by stardict.py'
-        writer = writemdict.MDictWriter(wordmap, title = title, 
+        writer = writemdict.MDictWriter(wordmap, title = title,
                 description = desc)
         with open(outname, 'wb') as fp:
             writer.write(fp)
@@ -1800,7 +1800,7 @@ def open_local(filename):
     for dir in [base, base + '/share', base + '/share/stardict']:
         if not os.path.exists(dir):
             os.mkdir(dir)
-    fn = os.path.join(base + '/share/stardict', filename)   
+    fn = os.path.join(base + '/share/stardict', filename)
     return open_dict(fn)
 
 
@@ -1884,6 +1884,3 @@ if __name__ == '__main__':
     def test5():
         print(tools.validate_word('Hello World', False))
     test3()
-
-
-
