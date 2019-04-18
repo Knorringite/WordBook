@@ -1012,7 +1012,7 @@ treasure = Treasure()
 if __name__ == '__main__':
 
 	def test1():
-		db = stardict.open_local('stardict.db')
+		db = stardict.open_dict('stardict.db')
 		data = db['higher']
 		# data = {'exchange':'p:P/d:D/i:I/0:haha'}
 		print(generator.word_exchange(data, 0))
@@ -1057,4 +1057,4 @@ if __name__ == '__main__':
 		generator._generate_html(sio, data)
 		print(sio.getvalue().encode('gbk', 'ignore'))
 
-	test6()
+	test4()
