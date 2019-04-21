@@ -43,7 +43,7 @@ class dict_en():
         if choice.bnc:
             sql += "bnc >= "+str(choice.bnc_num)+" and "
         if choice.frq:
-            sql += "frq >= "+str(choice.bnc_num)+" and "
+            sql += "frq >= "+str(choice.frq_num)+" and "
         if choice.pos:
             sql_pos="pos like %[233|"
             if choice.pos_v:
@@ -108,6 +108,7 @@ class dict_en():
             self.nowcount += 1
             self.nowwordtips_html = self.__gettipshtml(now)
             self.nowword = now
+            self.nowword_detail_html = self.__getdetailhtml(now)
         else:
             self.nowword = None
 
@@ -176,4 +177,48 @@ class dict_en():
         return html_return
 
     def __getdetailhtml(self, data):
-        pass
+        html = []
+        text = "<div style='text-align:center'><h1>%s</h1></div>"
+        html.append(text % self.treasure.text2html(data['word']))
+        html.append("<div style='text-align:center; font-size:85%;'>")
+        text = "<span style='font-family: Arial; color:blue;'>%s</span>"
+        html.append(text % self.treasure.get_phonetic(data))
+        text = "<span style='font-family: Arial; color:gray;'>%s</span>"
+        html.append(text % self.treasure.get_level(data))
+        html.append('</div>')
+        html = []
+        html.append('<div>')
+        hr = "height:1px;border:none;border-top:1px dashed #0066CC;"
+        hr = hr + "background-color:#ffffff;"
+        hr = '<hr style="%s">' % hr
+        text = "<div style='color:BlueViolet;text-align:center;font-size:16px;'>%s</div>"
+        html.append(text % self.treasure.get_translation(data))
+        html.append('<br>')
+        exchange = self.treasure.get_exchange(data)
+        if exchange:
+            text = "<div style='font-size:12px;color:gray;text-align:center'>%s<br></div>"
+            html.append(text % exchange)
+        proportion = self.treasure.get_proportion(data)
+        if proportion:
+            text = u"<div style='font-size:12px;color:gray;text-align:center'>分布：%s<br></div>"
+            html.append(text % proportion)
+        html.append(hr)
+        memo = self.treasure.get_memo(data)
+        if memo:
+            html.append('<div style="text-align:left;color:#895b8a;font-size:14px;">')
+            html.append(memo)
+            html.append('<br></div>')
+            html.append(hr)
+        explain = self.treasure.get_explain(data)
+        if explain:
+            html.append('<div style="text-align:left;font-size:14px;">')
+            html.append(explain)
+            html.append('<br></div>')
+        extra = self.treasure.get_extra(data)
+        if extra:
+            html.append(hr)
+            html.append('<div style="color:gray;font-size:14px;text-align:left">')
+            html.append(extra)
+            html.append('<br></div>')
+        html.append('<br></div>')
+        return '\n'.join(html)

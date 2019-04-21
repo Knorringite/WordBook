@@ -3,3 +3,6 @@ DICT/__pycache__/stardict.cpython-36.pyc
 DICT/ecdict.db
 DICT/test.html
 DICT/test.py
+*.pyc
+*.pyc
+DICT/__pycache__/dictutils.cpython-36.pyc

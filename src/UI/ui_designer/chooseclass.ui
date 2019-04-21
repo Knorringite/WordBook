@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ChooseClass_form</class>
- <widget class="QWidget" name="ChooseClass_form">
+ <class>ChooseClass</class>
+ <widget class="QWidget" name="ChooseClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -104,12 +104,12 @@
     <string>CET4</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="collins3_cb">
+  <widget class="QRadioButton" name="collins3_rbtn">
    <property name="geometry">
     <rect>
      <x>230</x>
      <y>310</y>
-     <width>31</width>
+     <width>30</width>
      <height>16</height>
     </rect>
    </property>
@@ -122,7 +122,7 @@
     <rect>
      <x>110</x>
      <y>280</y>
-     <width>101</width>
+     <width>100</width>
      <height>16</height>
     </rect>
    </property>
@@ -143,12 +143,12 @@
     <string>CET6</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="collins1_cb">
+  <widget class="QRadioButton" name="collins1_rbtn">
    <property name="geometry">
     <rect>
      <x>150</x>
      <y>310</y>
-     <width>41</width>
+     <width>40</width>
      <height>16</height>
     </rect>
    </property>
@@ -156,12 +156,12 @@
     <string>1</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="collins2_cb">
+  <widget class="QRadioButton" name="collins2_rbtn">
    <property name="geometry">
     <rect>
      <x>190</x>
      <y>310</y>
-     <width>41</width>
+     <width>40</width>
      <height>16</height>
     </rect>
    </property>
@@ -174,7 +174,7 @@
     <rect>
      <x>330</x>
      <y>240</y>
-     <width>131</width>
+     <width>130</width>
      <height>16</height>
     </rect>
    </property>
@@ -188,7 +188,7 @@
      <x>660</x>
      <y>220</y>
      <width>100</width>
-     <height>31</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -200,8 +200,8 @@
     <rect>
      <x>619</x>
      <y>50</y>
-     <width>141</width>
-     <height>41</height>
+     <width>140</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="text">
@@ -213,7 +213,7 @@
     <rect>
      <x>110</x>
      <y>350</y>
-     <width>201</width>
+     <width>200</width>
      <height>16</height>
     </rect>
    </property>
@@ -239,7 +239,7 @@
     <rect>
      <x>170</x>
      <y>380</y>
-     <width>61</width>
+     <width>60</width>
      <height>20</height>
     </rect>
    </property>
@@ -262,7 +262,7 @@
     <rect>
      <x>170</x>
      <y>450</y>
-     <width>61</width>
+     <width>60</width>
      <height>20</height>
     </rect>
    </property>
@@ -272,7 +272,7 @@
     <rect>
      <x>110</x>
      <y>420</y>
-     <width>171</width>
+     <width>170</width>
      <height>16</height>
     </rect>
    </property>
@@ -295,7 +295,7 @@
     <rect>
      <x>110</x>
      <y>490</y>
-     <width>101</width>
+     <width>100</width>
      <height>16</height>
     </rect>
    </property>
@@ -368,7 +368,7 @@
     <string>动词</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="n_cn">
+  <widget class="QCheckBox" name="n_cb">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -386,7 +386,7 @@
     <rect>
      <x>390</x>
      <y>520</y>
-     <width>71</width>
+     <width>70</width>
      <height>16</height>
     </rect>
    </property>
@@ -399,7 +399,7 @@
     <rect>
      <x>250</x>
      <y>60</y>
-     <width>31</width>
+     <width>30</width>
      <height>16</height>
     </rect>
    </property>
@@ -407,7 +407,7 @@
     <string>最多:</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="collins4_cb">
+  <widget class="QRadioButton" name="collins4_rbtn">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -420,7 +420,7 @@
     <string>4</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="collins5_cb">
+  <widget class="QRadioButton" name="collins5_rbtn">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -433,7 +433,7 @@
     <string>5</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="adv_cb_2">
+  <widget class="QCheckBox" name="posothers_cb">
    <property name="geometry">
     <rect>
      <x>460</x>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>recognizebyenUI</class>
- <widget class="QWidget" name="recognizebyenUI">
+ <class>recognizebyen</class>
+ <widget class="QWidget" name="recognizebyen">
   <property name="geometry">
    <rect>
     <x>0</x>
