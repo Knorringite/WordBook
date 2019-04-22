@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WordBook</class>
+ <widget class="QStackedWidget" name="WordBook">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>单词本</string>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="Main">
+   <widget class="QPushButton" name="AddWord_btn">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>470</y>
+      <width>640</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加单词</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="RemZh_btn">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>240</y>
+      <width>300</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>中文背英文</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Setting_btn">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>61</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>设置</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="WordStatus_label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>110</y>
+      <width>641</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>#单词掌握情况</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="RemEn_btn">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>240</y>
+      <width>300</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>英文背中文</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Version_label">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>580</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>test version</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="about_btn_2">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>0</y>
+      <width>61</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>关于</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="choose_en">
+   <widget class="QCheckBox" name="frq_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>410</y>
+      <width>170</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>当代语料库词频顺序</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="prep_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>介词</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="adj_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>510</y>
+      <width>70</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>形容词</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="gk_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>200</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>高考</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="bnc_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>340</y>
+      <width>200</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>英国国家语料库词频顺序</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="oxford_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>230</y>
+      <width>130</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>牛津核心3000词</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="frq_tl_en">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>440</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="collins3_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>300</y>
+      <width>30</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="bnc_tl_en">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>370</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cet6_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>200</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CET6</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="collins5_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="zk_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>200</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>中考</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="collins2_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>300</y>
+      <width>40</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="wordcount_tl_en">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>50</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="toefl_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>230</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>托福</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="back_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>210</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>返回</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="info1_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>440</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>前</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ielts_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>230</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>雅思</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="all_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>随机背诵全部单词</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="bnc_slider_en">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>370</y>
+      <width>300</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="status_label_en">
+    <property name="geometry">
+     <rect>
+      <x>609</x>
+      <y>40</y>
+      <width>140</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="tag_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>170</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>按标签筛选</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="verb_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>动词</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cet4_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>200</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CET4</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="info0_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>370</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>前</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="adv_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>副词</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="info2_en">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>50</y>
+      <width>30</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>最多:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="posothers_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>其它</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ky_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>230</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>考研</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="frq_slider_en">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>440</y>
+      <width>300</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="collins4_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>300</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="beginrecog_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>110</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>开始背诵</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="collins_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>270</y>
+      <width>100</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>柯林斯星级</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="collins1_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>300</y>
+      <width>40</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="pos_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>480</y>
+      <width>100</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>按词性筛选</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="n_cb_en">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>名词</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="select_rbtn_en">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>130</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>按条件筛选</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="recog_en">
+   <widget class="QTextBrowser" name="html_tb_en">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>670</width>
+      <height>460</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="playaudio_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>130</y>
+      <width>75</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>读音</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="remember_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>490</y>
+      <width>330</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>认识</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="forget_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>490</y>
+      <width>330</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>不认识</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tooeasy_btn_en">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>30</y>
+      <width>75</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>太简单</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="detail_en">
+   <widget class="QTextBrowser" name="detail_tb_en">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>510</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="word_pb_en">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>510</y>
+      <width>800</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="next_bt_en">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>530</y>
+      <width>800</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>下一个</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="choose_zh"/>
+  <widget class="QWidget" name="recog_zh"/>
+  <widget class="QWidget" name="detail_zh"/>
+  <widget class="QWidget" name="addword"/>
+  <widget class="QWidget" name="setting"/>
+  <widget class="QWidget" name="success"/>
+  <widget class="QWidget" name="about">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>30</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>单词本</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>110</y>
+      <width>231</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

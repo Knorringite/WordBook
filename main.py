@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtWidgets, QtCore
-from src.MainWindow import WordBook
+from src.WordBook import WordBook
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

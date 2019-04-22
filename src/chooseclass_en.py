@@ -1,160 +1,214 @@
-from src.UI.chooseclassUI import Ui_ChooseClass
-import pickle
-
-
-class ChooseClassEn_form(QtWidgets.QWidget, Ui_ChooseClass):
+import json
+import os
+class ChooseClassEn():
     def __init__(self, dict_en ,mainform):
-        super().__init__()
-        self.setupUi(self)
-        self.choice = pickle.load('./DICT/choice_en.pkl')
-        if self.choice is None:
-            self.choice.all = True
-            self.choice.tag = False
-            self.choice.zk = False
-            self.choice.gk = False
-            self.choice.cet4 = False
-            self.choice.cet6 = False
-            self.choice.ky = False
-            self.choice.toefl = False
-            self.choice.ielts = False
-            self.choice.oxford = False
-            self.choice.bnc = False
-            self.choice.frq = False
-            self.choice.pos = False
-            self.choice.pos_v = False
-            self.choice.pos_n = False
-            self.choice.pos_prep = False
-            self.choice.pos_adj = False
-            self.choice.pos_adv = False
-            self.choice.collins = False
-            self.choice.collins_num = 0
-            self.choice.bnc_num = 0
-            self.choice.frq_num = 0
+        self.choice = {}
+        self.mainform = mainform
+        if os.path.exists('./DICT/choice_en.pkl'):
+            with open('./DICT/choice_en.pkl','r') as f:
+                self.choice = json.load(f)
+        else:
+            self.choice['all'] = True
+            self.choice['tag'] = False
+            self.choice['zk'] = False
+            self.choice['gk'] = False
+            self.choice['cet4'] = False
+            self.choice['cet6'] = False
+            self.choice['ky'] = False
+            self.choice['toefl'] = False
+            self.choice['ielts'] = False
+            self.choice['oxford'] = False
+            self.choice['bnc'] = False
+            self.choice['frq'] = False
+            self.choice['pos'] = False
+            self.choice['pos_v'] = False
+            self.choice['pos_n'] = False
+            self.choice['pos_prep'] = False
+            self.choice['pos_adj'] = False
+            self.choice['pos_adv'] = False
+            self.choice['collins'] = False
+            self.choice['collins_num'] = 0
+            self.choice['bnc_num'] = 0
+            self.choice['frq_num'] = 0
         self.haveselected = False
         self.wantnum = 100
         self.actalnum = 0
-        self.bnc_slider.setRange(0, 100000)
-        self.frq_slider.setRange(0, 100000)
-        self.ok_btn.clicked.connect(mainform.choose2remember_en)
-        self.back_btn.clicked.connect(mainform.choose2main_en)
+        self.mainform.bnc_slider_en.setRange(0, 100000)
+        self.mainform.frq_slider_en.setRange(0, 100000)
+        self.mainform.beginrecog_btn_en.clicked.connect(
+            self.mainform.choose2remember_en)
+        self.mainform.back_btn_en.clicked.connect(self.mainform.choose2main_en)
+        self.mainform.frq_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.prep_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.adj_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.gk_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.bnc_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.oxford_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.frq_tl_en.textChanged.connect(self.updatechoice)
+        self.mainform.collins3_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.bnc_tl_en.textChanged.connect(self.updatechoice)
+        self.mainform.cet6_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.collins5_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.zk_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.collins2_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.wordcount_tl_en.textChanged.connect(self.updatechoice)
+        self.mainform.toefl_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.back_btn_en.toggled.connect(self.updatechoice)
+        self.mainform.ielts_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.all_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.bnc_slider_en.valueChanged.connect(self.updatechoice)
+        self.mainform.tag_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.verb_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.cet4_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.adv_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.posothers_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.ky_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.frq_slider_en.valueChanged.connect(self.updatechoice)
+        self.mainform.collins4_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.beginrecog_btn_en.clicked.connect(self.updatechoice)
+        self.mainform.collins_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.collins1_rbtn_en.toggled.connect(self.updatechoice)
+        self.mainform.pos_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.n_cb_en.toggled.connect(self.updatechoice)
+        self.mainform.select_rbtn_en.toggled.connect(self.updatechoice)
+
+
 
     def updatestate(self):
-        self.all_rbtn.setChecked(self.choice.all)
-        self.select_rbtn.setChecked(not self.choice.all)
-        self.tag_cb.setCheckable(not self.choice.all)
-        self.bnc_cb.setCheckable(not self.choice.all)
-        self.frq_cb.setCheckable(not self.choice.all)
-        self.pos_cb.setCheckable(not self.choice.all)
-        self.collins_cb.setCheckable(not self.choice.all)
+        print('updatestate')
 
-        self.tag_cb.setCheckState(self.choice.tag)
-        self.zk_cb.setCheckState(self.choice.zk)
-        self.gk_cb.setCheckState(self.choice.gk)
-        self.cet4_cb.setCheckState(self.choice.cet4)
-        self.ielts_cb.setCheckState(self.choice.tag)
-        self.toefl_cb.setCheckState(self.choice.tag)
-        self.cet6_cb.setCheckState(self.choice.cet6)
-        self.ky_cb.setCheckState(self.choice.ky)
-        self.oxford_cb.setCheckState(self.choice.oxford)
+        self.mainform.all_rbtn_en.setChecked(self.choice['all'])
+        self.mainform.select_rbtn_en.setChecked(not self.choice['all'])
+        self.mainform.tag_cb_en.setCheckable(not self.choice['all'])
+        self.mainform.bnc_cb_en.setCheckable(not self.choice['all'])
+        self.mainform.frq_cb_en.setCheckable(not self.choice['all'])
+        self.mainform.pos_cb_en.setCheckable(not self.choice['all'])
+        self.mainform.collins_cb_en.setCheckable(not self.choice['all'])
 
-        self.zk_cb.setCheckable(self.choice.tag)
-        self.gk_cb.setCheckable(self.choice.tag)
-        self.cet4_cb.setCheckable(self.choice.tag)
-        self.ielts_cb.setCheckable(self.choice.tag)
-        self.toefl_cb.setCheckable(self.choice.tag)
-        self.cet6_cb.setCheckable(self.choice.tag)
-        self.ky_cb.setCheckable(self.choice.tag)
-        self.oxford_cb.setCheckable(self.choice.tag)
+        self.mainform.tag_cb_en.setCheckState(self.choice['tag'])
+        self.mainform.zk_cb_en.setCheckState(self.choice['zk'])
+        self.mainform.gk_cb_en.setCheckState(self.choice['gk'])
+        self.mainform.cet4_cb_en.setCheckState(self.choice['cet4'])
+        self.mainform.ielts_cb_en.setCheckState(self.choice['tag'])
+        self.mainform.toefl_cb_en.setCheckState(self.choice['tag'])
+        self.mainform.cet6_cb_en.setCheckState(self.choice['cet6'])
+        self.mainform.ky_cb_en.setCheckState(self.choice['ky'])
+        self.mainform.oxford_cb_en.setCheckState(self.choice['oxford'])
 
-        self.bnc_cb.setCheckState(self.choice.bnc)
-        self.frq_cb.setCheckState(self.choice.frq)
-        self.bnc_slider.setValue(self.choice.bnc_num)
-        self.frq_slider.setValue(self.choice.frq_num)
-        self.bnc_slider.setDisabled(self.choice.bnc)
-        self.frq_slider.setDisabled(self.choice.frq)
+        self.mainform.zk_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.gk_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.cet4_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.ielts_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.toefl_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.cet6_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.ky_cb_en.setCheckable(self.choice['tag'])
+        self.mainform.oxford_cb_en.setCheckable(self.choice['tag'])
 
-        self.pos_cb.setCheckState(self.choice.pos)
-        self.prep_cb.setCheckState(self.choice.prep)
-        self.adv_cb.setCheckState(self.choice.adv)
-        self.verb_cb.setCheckState(self.choice.verb)
-        self.n_cb.setCheckState(self.choice.n)
-        self.adj_cb.setCheckState(self.choice.adj)
-        self.posothers_cb.setCheckState(self.choice.posothers)
-        self.prep_cb.setCheckable(self.choice.pos)
-        self.adv_cb.setCheckable(self.choice.pos)
-        self.verb_cb.setCheckable(self.choice.pos)
-        self.n_cb.setCheckable(self.choice.pos)
-        self.adj_cb.setCheckable(self.choice.pos)
-        self.posothers_cb.setCheckable(self.choice.pos)
+        self.mainform.bnc_cb_en.setCheckState(self.choice['bnc'])
+        self.mainform.frq_cb_en.setCheckState(self.choice['frq'])
+        self.mainform.bnc_slider_en.setValue(int(self.choice['bnc_num']))
+        self.mainform.frq_slider_en.setValue(int(self.choice['frq_num']))
+        self.mainform.bnc_slider_en.setDisabled(self.choice['bnc'])
+        self.mainform.frq_slider_en.setDisabled(self.choice['frq'])
 
-        self.collins_cb.setCheckState(self.choice.collins)
-        if self.choice.collins_num == 1:
-            self.collins1_rbtn.setCheckState(True)
+        self.mainform.pos_cb_en.setCheckState(self.choice['pos'])
+        self.mainform.prep_cb_en.setCheckState(self.choice['prep'])
+        self.mainform.adv_cb_en.setCheckState(self.choice['adv'])
+        self.mainform.verb_cb_en.setCheckState(self.choice['verb'])
+        self.mainform.n_cb_en.setCheckState(self.choice['n'])
+        self.mainform.adj_cb_en.setCheckState(self.choice['adj'])
+        self.mainform.posothers_cb_en.setCheckState(self.choice['posothers'])
+        self.mainform.prep_cb_en.setCheckable(self.choice['pos'])
+        self.mainform.adv_cb_en.setCheckable(self.choice['pos'])
+        self.mainform.verb_cb_en.setCheckable(self.choice['pos'])
+        self.mainform.n_cb_en.setCheckable(self.choice['pos'])
+        self.mainform.adj_cb_en.setCheckable(self.choice['pos'])
+        self.mainform.posothers_cb_en.setCheckable(self.choice['pos'])
+
+        self.mainform.collins_cb_en.setCheckState(self.choice['collins'])
+        if self.choice['collins_num'] == 1:
+            self.mainform.collins1_rbtn_en.setChecked(True)
         else:
-            self.collins1_rbtn.setCheckState(False)
-        if self.choice.collins_num == 2:
-            self.collins2_rbtn.setCheckState(True)
+            self.mainform.collins1_rbtn_en.setChecked(False)
+        if self.choice['collins_num'] == 2:
+            self.mainform.collins2_rbtn_en.setChecked(True)
         else:
-            self.collins2_rbtn.setCheckState(False)
-        if self.choice.collins_num == 3:
-            self.collins3_rbtn.setCheckState(True)
+            self.mainform.collins2_rbtn_en.setChecked(False)
+        if self.choice['collins_num'] == 3:
+            self.mainform.collins3_rbtn_en.setChecked(True)
         else:
-            self.collins3_rbtn.setCheckState(False)
-        if self.choice.collins_num == 4:
-            self.collins4_rbtn.setCheckState(True)
+            self.mainform.collins3_rbtn_en.setChecked(False)
+        if self.choice['collins_num'] == 4:
+            self.mainform.collins4_rbtn_en.setChecked(True)
         else:
-            self.collins4_rbtn.setCheckState(False)
-        if self.choice.collins_num == 5:
-            self.collins5_rbtn.setCheckState(True)
+            self.mainform.collins4_rbtn_en.setChecked(False)
+        if self.choice['collins_num'] == 5:
+            self.mainform.collins5_rbtn_en.setChecked(True)
         else:
-            self.collins5_rbtn.setCheckState(False)
+            self.mainform.collins5_rbtn_en.setChecked(False)
 
-        self.collins1_rbtn.setCheckable(self.choice.collins)
-        self.collins2_rbtn.setCheckable(self.choice.collins)
-        self.collins3_rbtn.setCheckable(self.choice.collins)
-        self.collins4_rbtn.setCheckable(self.choice.collins)
-        self.collins5_rbtn.setCheckable(self.choice.collins)
+        self.mainform.collins1_rbtn_en.setCheckable(self.choice['collins'])
+        self.mainform.collins2_rbtn_en.setCheckable(self.choice['collins'])
+        self.mainform.collins3_rbtn_en.setCheckable(self.choice['collins'])
+        self.mainform.collins4_rbtn_en.setCheckable(self.choice['collins'])
+        self.mainform.collins5_rbtn_en.setCheckable(self.choice['collins'])
         if self.haveselected:
-            self.status_label.setText('已找到'+str(self.actalnum)+'个单词')
+            self.mainform.status_label_en.setText(
+                '已找到'+str(self.actalnum)+'个单词')
 
 
     def updatechoice(self):
-        self.choice.all = self.all_rbtn().isChecked()
-        self.choice.tag = self.tag_cb.isChecked()
-        self.choice.zk = self.zk_cb.isChecked()
-        self.choice.gk = self.gk_cb.isChecked()
-        self.choice.cet4 = self.cet4_cb.isChecked()
-        self.choice.cet6 = self.cet6_cb.isChecked()
-        self.choice.oxford = self.oxford_cb.isChecked()
-        self.choice.ky = self.ky_cb.isChecked()
-        self.choice.ielts = self.ielts_cb.isChecked()
-        self.choice.toefl = self.toefl_cb.isChecked()
 
-        self.choice.bnc = self.bnc_cb.isChecked()
-        self.choice.bnc_num = self.bnc_tl.text()
+        self.choice['all'] = self.mainform.all_rbtn_en.isChecked()
+        self.choice['tag'] = self.mainform.tag_cb_en.isChecked()
+        self.choice['zk'] = self.mainform.zk_cb_en.isChecked()
+        self.choice['gk'] = self.mainform.gk_cb_en.isChecked()
+        self.choice['cet4'] = self.mainform.cet4_cb_en.isChecked()
+        self.choice['cet6'] = self.mainform.cet6_cb_en.isChecked()
+        self.choice['oxford'] = self.mainform.oxford_cb_en.isChecked()
+        self.choice['ky'] = self.mainform.ky_cb_en.isChecked()
+        self.choice['ielts'] = self.mainform.ielts_cb_en.isChecked()
+        self.choice['toefl'] = self.mainform.toefl_cb_en.isChecked()
 
-        self.choice.frq = self.frq_cb.isChecked()
-        self.choice.frq_num = self.frq_tl.text()
+        self.choice['bnc'] = self.mainform.bnc_cb_en.isChecked()
+        num = self.mainform.bnc_tl_en.text()
+        if num.isdigit():
+            self.choice['bnc_num'] = int(num)
+        else:
+            self.choice['bnc_num'] = 0
 
-        self.choice.pos = self.pos_cb.isChecked()
-        self.choice.prep = self.prep_cb.isChecked()
-        self.choice.adv = self.adv_cb.isChecked()
-        self.choice.verb = self.verb_cb.isChecked()
-        self.choice.n = self.n_cb.isChecked()
-        self.choice.adj = self.adj_cb.isChecked()
-        self.choice.posothers = self.posothers_cb.isChecked()
+        self.choice['frq'] = self.mainform.frq_cb_en.isChecked()
 
-        self.choice.collins = self.collins1_rbtn.setCheckState(self.choice.tag)
-        self.choice.collins_num = self.collins2_rbtn.setCheckState(self.choice.tag)
+        num = self.mainform.frq_tl_en.text()
+        if num.isdigit():
+            self.choice['frq_num'] = int(num)
+        else:
+            self.choice['frq_num'] = 0
 
-        self.wantnum = self.wordcount_tl.text()
+        self.choice['pos'] = self.mainform.pos_cb_en.isChecked()
+        self.choice['prep'] = self.mainform.prep_cb_en.isChecked()
+        self.choice['adv'] = self.mainform.adv_cb_en.isChecked()
+        self.choice['verb'] = self.mainform.verb_cb_en.isChecked()
+        self.choice['n'] = self.mainform.n_cb_en.isChecked()
+        self.choice['adj'] = self.mainform.adj_cb_en.isChecked()
+        self.choice['posothers'] = self.mainform.posothers_cb_en.isChecked()
+
+        self.choicecollins = self.mainform.collins1_rbtn_en.setChecked(self.choice['tag'])
+        self.choicecollins_num = self.mainform.collins2_rbtn_en.setChecked(
+            self.choice['tag'])
+
+        num = self.mainform.wordcount_tl_en.text()
+        if num.isdigit():
+            self.wantnum = int(num)
+        else:
+            self.wantnum = 0
 
         self.updatestate()
 
     def updatebnc(self,value):
-        self.bnc_tl.setText(str(value))
+        self.mainform.bnc_tl_en.setText(str(value))
         self.updatechoice()
 
     def updatefrq(self,value):
-        self.frq_tl.setText(str(value))
+        self.mainform.frq_tl_en.setText(str(value))
         self.updatechoice()
