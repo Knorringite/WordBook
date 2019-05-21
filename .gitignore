@@ -6,3 +6,6 @@ DICT/test.py
 *.pyc
 *.pyc
 DICT/__pycache__/dictutils.cpython-36.pyc
+*.xml
+venv/*
+.idea/*

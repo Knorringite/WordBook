@@ -57,6 +57,7 @@ class WordBook(QWidget, Ui_Main):
         self.option_page.setting_signals.disconnect(self.get_option_page_signal)
 
     def update_state(self):
+
         right_words = []
         if os.path.exists('../DICT/right_word_record.pkl'):
             with open('../DICT/right_word_record.pkl', 'rb') as f:
