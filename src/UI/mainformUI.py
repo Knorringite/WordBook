@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\ui_designer\mainform.ui'
+# Form implementation generated from reading ui file 'mainform.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from src.UI import recognizebychUI
+from src.UI import recognizebyenUI
 
 class Ui_WordBook_mainform(object):
     def setupUi(self, WordBook_mainform):
@@ -36,6 +38,7 @@ class Ui_WordBook_mainform(object):
         self.Setting_btn.setObjectName("Setting_btn")
 
         self.retranslateUi(WordBook_mainform)
+        self.RemEn_btn.clicked.connect(WordBook_mainform.showRecognitionbychUI)
         QtCore.QMetaObject.connectSlotsByName(WordBook_mainform)
 
     def retranslateUi(self, WordBook_mainform):

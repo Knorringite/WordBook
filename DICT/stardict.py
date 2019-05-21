@@ -161,6 +161,15 @@ class StarDict (object):
             result.append(tuple(record))
         return result
 
+    def query_sql(self, sql, keys):
+        c = self.__conn.cursor()
+        c.execute(sql, keys)
+        result = []
+        for row in c:
+            obj = self.__record2obj(row)
+            result.append(obj)
+        return result
+
     # 批量查询
     def query_batch (self, keys):
         sql = 'select * from stardict where '
@@ -1753,6 +1762,7 @@ class DictHelper (object):
 # Helper instance
 #----------------------------------------------------------------------
 tools = DictHelper()
+
 
 # 根据文件名自动判断数据库类型并打开
 def open_dict(filename):

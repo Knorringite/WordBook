@@ -11,7 +11,7 @@
 import sys
 import os
 import time
-import stardict
+import DICT.stardict as stardict
 import codecs
 
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>worddetailUI</class>
+ <widget class="QWidget" name="worddetailUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>单词详情</string>
+  </property>
+  <widget class="QTextBrowser" name="detail_tb">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>510</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="next_bt">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>530</y>
+     <width>800</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>下一个</string>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="word_pb">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>510</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>24</number>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>next_bt</sender>
+   <signal>clicked()</signal>
+   <receiver>worddetailUI</receiver>
+   <slot>next_word()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>217</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-7</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>next_word()</slot>
+ </slots>
+</ui>
